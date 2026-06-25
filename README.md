@@ -99,8 +99,7 @@ particular* à conversa de promoção — nunca para o site nem para o históric
 ## Personalização rápida
 
 - **Contato:** botão "Falar comigo" usa `mailto:marcovdbraida@gmail.com`; botão
-  **LinkedIn** aponta para `https://www.linkedin.com/in/SEU-PERFIL-LINKEDIN`
-  (ajuste para a URL real do seu perfil).
+  **LinkedIn** aponta para `https://www.linkedin.com/in/marco-braida-465b6a96/`.
 - **Cor de acento:** variável `--accent` no `<style>` (e `ACCENT` no script).
 - **Conteúdo:** seções, métricas, casos e dossiê estão diretamente no `index.html`.
 
