@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marco Braida · Case File QA Sênior</title>
+<meta name="description" content="Currículo visual de Marco Braida — dossiê que comprova, com evidências, a operação no nível QA Sênior. 100% estático, sem rastreamento.">
+<meta name="author" content="Marco Braida">
+<meta name="robots" content="index, follow">
+
+<!-- Fontes: única dependência externa (PRD §4.4) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg0:#05080f; --paper:#e9eef8; --slate:#94a4bd; --slate-d:#5d6f88;
+    --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+    --accent:#4f8cff; --accent-2:#9cc0ff; --accent-deep:#3b82f6;
+    --accent-soft:rgba(79,140,255,.12); --accent-line:rgba(79,140,255,.32);
+    --gold:#f3c969;
+    --glass:rgba(255,255,255,.038); --glass-2:rgba(255,255,255,.07);
+    --display:"Space Grotesk",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --serif:"Instrument Serif",Georgia,serif;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:var(--display);color:var(--paper);background:var(--bg0);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#05080f}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+  /* hovers (equivalentes ao layout original) */
+  .nav-link:hover{color:var(--paper)!important}
+  .metric:hover{border-color:var(--accent-line)!important;transform:translateY(-4px);background:var(--glass-2)!important}
+  .case-head:hover{background:var(--glass)!important}
+  .pipe:hover{border-color:var(--accent-line)!important;transform:translateY(-3px)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(79,140,255,.45)!important}
+  .btn-ghost:hover{background:var(--accent-soft)!important;transform:translateY(-2px)}
+
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(8px);opacity:1}}
+  @keyframes blink{50%{opacity:.25}}
+  @keyframes deckFloat{0%,100%{transform:rotateX(16deg) rotateY(-26deg) translateY(0)}50%{transform:rotateX(16deg) rotateY(-26deg) translateY(-12px)}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media print{
+    *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+    #hudFrame,#nav,#globe{display:none!important}
+    [data-reveal]{opacity:1!important;transform:none!important}
+    section,header,table,tr,.doc-card{break-inside:avoid;page-break-inside:avoid}
+    header#top{min-height:auto!important;padding-top:40px!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ░░ BACKGROUND LAYERS ░░ -->
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(1000px 560px at 80% -6%, rgba(79,140,255,.18), transparent 60%), radial-gradient(760px 620px at 6% 108%, rgba(79,140,255,.07), transparent 55%), var(--bg0)"></div>
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(circle at 50% 36%, #000 0%, transparent 76%);mask-image:radial-gradient(circle at 50% 36%, #000 0%, transparent 76%);opacity:.55"></div>
+
+<!-- ░░ HUD FRAME OVERLAY ░░ -->
+<div id="hudFrame" aria-hidden="true" style="position:fixed;inset:0;z-index:60;pointer-events:none">
+  <span style="position:absolute;top:14px;left:14px;width:22px;height:22px;border-left:1.5px solid var(--accent-line);border-top:1.5px solid var(--accent-line)"></span>
+  <span style="position:absolute;top:14px;right:14px;width:22px;height:22px;border-right:1.5px solid var(--accent-line);border-top:1.5px solid var(--accent-line)"></span>
+  <span style="position:absolute;bottom:14px;left:14px;width:22px;height:22px;border-left:1.5px solid var(--accent-line);border-bottom:1.5px solid var(--accent-line)"></span>
+  <span style="position:absolute;bottom:14px;right:14px;width:22px;height:22px;border-right:1.5px solid var(--accent-line);border-bottom:1.5px solid var(--accent-line)"></span>
+  <div style="position:absolute;left:20px;bottom:16px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--slate-d);display:flex;gap:18px">
+    <span id="hudScroll">SCROLL 0%</span><span id="hudSec">SEC 01/09</span>
+  </div>
+  <div style="position:absolute;right:20px;bottom:16px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--slate-d)">CASE_FILE · QA-SÊNIOR</div>
+</div>
+
+<!-- ░░ NAV ░░ -->
+<nav id="nav" style="position:fixed;top:0;left:0;right:0;z-index:55;display:flex;align-items:center;gap:14px;padding:14px clamp(20px,4vw,30px);border-bottom:1px solid transparent;transition:background .3s,border-color .3s,backdrop-filter .3s">
+  <a href="#top" style="display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0">
+    <span style="position:relative;width:22px;height:22px;border:1.5px solid var(--accent);border-radius:50%;display:grid;place-items:center">
+      <span style="width:7px;height:7px;background:var(--accent);transform:rotate(45deg);display:block"></span>
+    </span>
+    <span style="font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--paper);font-weight:500">MARCO BRAIDA</span>
+  </a>
+  <div style="margin-left:auto;display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none">
+    <a class="nav-link" href="#caso" data-sec="caso" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">o caso</a>
+    <a class="nav-link" href="#metricas" data-sec="metricas" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">impacto</a>
+    <a class="nav-link" href="#suite" data-sec="suite" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">suíte sênior</a>
+    <a class="nav-link" href="#ia" data-sec="ia" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">ia</a>
+    <a class="nav-link" href="#radar" data-sec="radar" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">senioridade</a>
+    <a class="nav-link" href="#trajetoria" data-sec="trajetoria" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">trajetória</a>
+    <a class="nav-link" href="#conhecimento" data-sec="conhecimento" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">repertório</a>
+    <a class="nav-link" href="#mercado" data-sec="mercado" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">mercado</a>
+    <a class="nav-link" href="#pedido" data-sec="pedido" style="font-family:var(--mono);font-size:11.5px;color:var(--slate);padding:7px 13px;border-radius:8px;letter-spacing:.03em;white-space:nowrap;flex-shrink:0;text-decoration:none;transition:color .2s,background .2s">o pedido</a>
+  </div>
+</nav>
+
+<main style="position:relative;z-index:1">
+
+<!-- ░░ HERO ░░ -->
+<header id="top" data-screen-label="Hero" style="position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 96px;overflow:hidden">
+  <canvas id="globe" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block"></canvas>
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg, var(--bg0) 0%, rgba(5,8,15,.84) 32%, rgba(5,8,15,.34) 58%, transparent 80%)"></div>
+  <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:170px;z-index:1;pointer-events:none;background:linear-gradient(0deg, var(--bg0) 8%, transparent)"></div>
+  <div style="position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div style="max-width:700px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>Caso para promoção · QA Sênior</span>
+      <h1 style="font-family:var(--display);font-weight:600;font-size:clamp(42px,6.6vw,84px);line-height:1.0;letter-spacing:-.025em;margin:22px 0 22px">Eu não <em style="font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent-2)">peço</em> o nível Sênior.<br>Eu já <em style="font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent-2)">opero</em> nele.</h1>
+      <p style="font-size:clamp(16px,1.9vw,20px);color:var(--slate);max-width:36ch;line-height:1.6;margin-bottom:32px">12 anos de casa, automação de testes ponta a ponta e IA como multiplicador — com supervisão humana em cada entrega.</p>
+      <div style="display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12.5px;padding:11px 18px;border:1px solid var(--accent-line);border-radius:999px;background:var(--glass);backdrop-filter:blur(8px);flex-wrap:wrap">
+        <span style="color:var(--slate)">Automation Test Developer · Pleno</span>
+        <span style="color:var(--accent)">→</span>
+        <span style="color:var(--paper);font-weight:500">Sênior</span>
+      </div>
+    </div>
+  </div>
+  <div aria-hidden="true" style="position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--slate-d)">
+    <span>SCROLL</span>
+    <span style="width:1px;height:34px;background:linear-gradient(var(--accent),transparent);animation:bob 1.9s ease-in-out infinite"></span>
+  </div>
+</header>
+
+<!-- ░░ 01 · O CASO ░░ -->
+<section id="caso" data-screen-label="O caso" style="position:relative;z-index:1;padding:96px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div data-reveal="" style="max-width:64ch;margin-bottom:48px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>01 · A tese</span>
+      <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px;text-wrap:balance">Senioridade não é tempo de casa. É o que você sustenta sozinho.</h2>
+      <p style="color:var(--slate);font-size:16px;max-width:62ch">Os 12 anos são contexto. O que importa é o que está abaixo: cada competência esperada de um Sênior, mapeada a uma evidência verificável — descrita aqui de forma genérica, com os números completos disponíveis internamente.</p>
+    </div>
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:8px">
+      <p style="font-family:var(--display);font-weight:400;font-size:clamp(22px,3.1vw,38px);line-height:1.32;letter-spacing:-.01em;color:var(--paper)"><span style="color:var(--slate-d)">Hoje eu</span> defino arquitetura de testes,</p>
+      <p style="font-family:var(--display);font-weight:400;font-size:clamp(22px,3.1vw,38px);line-height:1.32;letter-spacing:-.01em;color:var(--paper)"><span style="color:var(--slate-d)">construo</span> as ferramentas que o time usa,</p>
+      <p style="font-family:var(--display);font-weight:400;font-size:clamp(22px,3.1vw,38px);line-height:1.32;letter-spacing:-.01em;color:var(--paper)"><span style="color:var(--slate-d)">e</span> <em style="font-family:var(--serif);font-style:italic;color:var(--accent-2)">multiplico a capacidade de QA com IA</em> —</p>
+      <p style="font-family:var(--display);font-weight:400;font-size:clamp(22px,3.1vw,38px);line-height:1.32;letter-spacing:-.01em;color:var(--slate-d)">sem deixar de validar cada resultado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 02 · MÉTRICAS ░░ -->
+<section id="metricas" data-screen-label="Impacto" style="position:relative;z-index:1;padding:96px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div data-reveal="" style="max-width:64ch;margin-bottom:44px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>02 · Impacto agregado</span>
+      <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px">Números de um período recente de trabalho</h2>
+      <p style="color:var(--slate);font-size:16px;max-width:62ch">Métricas anonimizadas, sem dados de cliente ou de sistema. A ordem de grandeza é o ponto.</p>
+    </div>
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+      <div class="metric" style="position:relative;border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .25s,transform .25s,background .25s">
+        <span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate-d)">// 01</span>
+        <div style="font-family:var(--display);font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--accent)"><span data-to="46">0</span></div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate);margin-top:13px;text-transform:uppercase">Agentes de IA</div>
+        <div style="font-size:12.5px;color:var(--slate-d);margin-top:5px">especializados, versionados</div>
+      </div>
+      <div class="metric" style="position:relative;border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .25s,transform .25s,background .25s">
+        <span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate-d)">// 02</span>
+        <div style="font-family:var(--display);font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--accent)"><span data-to="27">0</span></div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate);margin-top:13px;text-transform:uppercase">Skills reutilizáveis</div>
+        <div style="font-size:12.5px;color:var(--slate-d);margin-top:5px">procedimentos auditáveis</div>
+      </div>
+      <div class="metric" style="position:relative;border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .25s,transform .25s,background .25s">
+        <span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate-d)">// 03</span>
+        <div style="font-family:var(--display);font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--accent)"><span data-to="32">0</span></div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate);margin-top:13px;text-transform:uppercase">PRDs gerados</div>
+        <div style="font-size:12.5px;color:var(--slate-d);margin-top:5px">requisitos estruturados</div>
+      </div>
+      <div class="metric" style="position:relative;border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .25s,transform .25s,background .25s">
+        <span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate-d)">// 04</span>
+        <div style="font-family:var(--display);font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--accent)"><span data-to="25">0</span></div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate);margin-top:13px;text-transform:uppercase">Testes E2E</div>
+        <div style="font-size:12.5px;color:var(--slate-d);margin-top:5px">13 specs · Playwright</div>
+      </div>
+      <div class="metric" style="position:relative;border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .25s,transform .25s,background .25s">
+        <span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate-d)">// 05</span>
+        <div style="font-family:var(--display);font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--accent)"><span data-to="10">0</span></div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate);margin-top:13px;text-transform:uppercase">Bugs barrados</div>
+        <div style="font-size:12.5px;color:var(--slate-d);margin-top:5px">antes da produção</div>
+      </div>
+      <div class="metric" style="position:relative;border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .25s,transform .25s,background .25s">
+        <span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate-d)">// 06</span>
+        <div style="font-family:var(--display);font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--accent)"><span data-to="18">0</span></div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate);margin-top:13px;text-transform:uppercase">Vulnerabilidades</div>
+        <div style="font-size:12.5px;color:var(--slate-d);margin-top:5px">em auditoria de segurança</div>
+      </div>
+      <div class="metric" style="position:relative;border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .25s,transform .25s,background .25s">
+        <span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate-d)">// 07</span>
+        <div style="font-family:var(--display);font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--accent)"><span data-to="57">0</span></div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate);margin-top:13px;text-transform:uppercase">Endpoints auditados</div>
+        <div style="font-size:12.5px;color:var(--slate-d);margin-top:5px">96 cenários de segurança</div>
+      </div>
+      <div class="metric" style="position:relative;border:1px solid var(--line);border-radius:14px;padding:24px 20px;background:var(--glass);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .25s,transform .25s,background .25s">
+        <span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--slate-d)">// 08</span>
+        <div style="font-family:var(--display);font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em;color:var(--accent)"><span data-to="12">0</span></div>
+        <div style="font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate);margin-top:13px;text-transform:uppercase">Anos de casa</div>
+        <div style="font-size:12.5px;color:var(--slate-d);margin-top:5px">do manual ao QA com IA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 03 · SUÍTE ░░ -->
+<section id="suite" data-screen-label="Suíte Sênior" style="position:relative;z-index:1;padding:96px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div data-reveal="" style="max-width:64ch;margin-bottom:44px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>03 · A suíte que comprova</span>
+      <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px">Cada critério de Sênior, como um teste que passa</h2>
+      <p style="color:var(--slate);font-size:16px;max-width:62ch">Toque em cada caso para ver a evidência. Tudo descrito sem expor cliente, sistema ou detalhe sensível.</p>
+    </div>
+    <div data-reveal="" style="position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(8,14,26,.55);backdrop-filter:blur(12px)">
+      <span aria-hidden="true" style="position:absolute;top:10px;left:10px;width:16px;height:16px;border-left:1.5px solid var(--accent-line);border-top:1.5px solid var(--accent-line);z-index:2"></span>
+      <span aria-hidden="true" style="position:absolute;bottom:10px;right:10px;width:16px;height:16px;border-right:1.5px solid var(--accent-line);border-bottom:1.5px solid var(--accent-line);z-index:2"></span>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12.5px;color:var(--slate)">
+        <span style="display:flex;gap:6px;margin-right:4px"><i style="width:10px;height:10px;border-radius:50%;background:#ff5f56;display:block"></i><i style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;display:block"></i><i style="width:10px;height:10px;border-radius:50%;background:#27c93f;display:block"></i></span>
+        <span style="color:var(--accent)">RUN</span> senioridade.suite.ts
+        <span style="margin-left:auto;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);padding:5px 13px;border-radius:999px;font-size:11.5px;white-space:nowrap">8 passed · 0 failed</span>
+      </div>
+
+      <div data-case="" style="border-bottom:1px solid var(--line)">
+        <button class="case-head" data-case-head="" type="button" aria-expanded="false" style="width:100%;text-align:left;background:none;border:none;color:inherit;cursor:pointer;display:flex;align-items:center;gap:15px;padding:18px 20px;font-family:var(--display);transition:background .2s">
+          <span style="width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:13px;flex-shrink:0">✓</span>
+          <span style="font-family:var(--mono);font-size:14px;color:var(--paper);overflow-wrap:anywhere"><span style="color:var(--accent)">assert</span>(lideranca_tecnica)</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-left:auto;letter-spacing:.1em;flex-shrink:0">PASS</span>
+          <span data-chev="" style="color:var(--slate-d);transition:transform .3s;flex-shrink:0;font-size:13px">▸</span>
+        </button>
+        <div data-case-body="" style="max-height:0;overflow:hidden;transition:max-height .42s ease">
+          <div style="padding:2px clamp(18px,4vw,28px) 24px clamp(18px,5vw,59px);color:var(--slate);font-size:14.5px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;display:block;margin-bottom:10px">// evidência</span>
+            Não espero direção técnica — eu a produzo.
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Criei o framework de automação E2E unificado usado pelo time (arquitetura em camadas: specs, page objects, helpers).</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Defini um padrão de fábrica reutilizável que padroniza como novos projetos nascem.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Construí um dashboard de resultados de teste sob medida, com KPIs, falhas e histórico.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-case="" style="border-bottom:1px solid var(--line)">
+        <button class="case-head" data-case-head="" type="button" aria-expanded="false" style="width:100%;text-align:left;background:none;border:none;color:inherit;cursor:pointer;display:flex;align-items:center;gap:15px;padding:18px 20px;font-family:var(--display);transition:background .2s">
+          <span style="width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:13px;flex-shrink:0">✓</span>
+          <span style="font-family:var(--mono);font-size:14px;color:var(--paper);overflow-wrap:anywhere"><span style="color:var(--accent)">assert</span>(autonomia_e_ownership)</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-left:auto;letter-spacing:.1em;flex-shrink:0">PASS</span>
+          <span data-chev="" style="color:var(--slate-d);transition:transform .3s;flex-shrink:0;font-size:13px">▸</span>
+        </button>
+        <div data-case-body="" style="max-height:0;overflow:hidden;transition:max-height .42s ease">
+          <div style="padding:2px clamp(18px,4vw,28px) 24px clamp(18px,5vw,59px);color:var(--slate);font-size:14.5px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;display:block;margin-bottom:10px">// evidência</span>
+            Conduzo a demanda do início ao fim, sozinho e de forma auditável.
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Ciclo completo: requisito → especificação técnica → tarefas → execução → evidência → relatório → roteiro de homologação.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Cada entrega permanece auditável meses depois, com screenshot por cenário.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Tomo as decisões de arquitetura e assumo a responsabilidade pelo resultado.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-case="" style="border-bottom:1px solid var(--line)">
+        <button class="case-head" data-case-head="" type="button" aria-expanded="false" style="width:100%;text-align:left;background:none;border:none;color:inherit;cursor:pointer;display:flex;align-items:center;gap:15px;padding:18px 20px;font-family:var(--display);transition:background .2s">
+          <span style="width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:13px;flex-shrink:0">✓</span>
+          <span style="font-family:var(--mono);font-size:14px;color:var(--paper);overflow-wrap:anywhere"><span style="color:var(--accent)">assert</span>(mentoria_e_disseminacao)</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-left:auto;letter-spacing:.1em;flex-shrink:0">PASS</span>
+          <span data-chev="" style="color:var(--slate-d);transition:transform .3s;flex-shrink:0;font-size:13px">▸</span>
+        </button>
+        <div data-case-body="" style="max-height:0;overflow:hidden;transition:max-height .42s ease">
+          <div style="padding:2px clamp(18px,4vw,28px) 24px clamp(18px,5vw,59px);color:var(--slate);font-size:14.5px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;display:block;margin-bottom:10px">// evidência</span>
+            Senioridade que eleva o time, não só a si mesmo.
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Dissemino agentes e práticas de IA para POs e demais QAs.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Documentação viva que preserva o "como fazer" e acelera o onboarding.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Apoio recorrente aos colegas em testes manuais e automatizados.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-case="" style="border-bottom:1px solid var(--line)">
+        <button class="case-head" data-case-head="" type="button" aria-expanded="false" style="width:100%;text-align:left;background:none;border:none;color:inherit;cursor:pointer;display:flex;align-items:center;gap:15px;padding:18px 20px;font-family:var(--display);transition:background .2s">
+          <span style="width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:13px;flex-shrink:0">✓</span>
+          <span style="font-family:var(--mono);font-size:14px;color:var(--paper);overflow-wrap:anywhere"><span style="color:var(--accent)">assert</span>(arquitetura_de_testes)</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-left:auto;letter-spacing:.1em;flex-shrink:0">PASS</span>
+          <span data-chev="" style="color:var(--slate-d);transition:transform .3s;flex-shrink:0;font-size:13px">▸</span>
+        </button>
+        <div data-case-body="" style="max-height:0;overflow:hidden;transition:max-height .42s ease">
+          <div style="padding:2px clamp(18px,4vw,28px) 24px clamp(18px,5vw,59px);color:var(--slate);font-size:14.5px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;display:block;margin-bottom:10px">// evidência</span>
+            Cobertura desenhada, não improvisada.
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Suíte em camadas com Page Object Model e helpers reutilizáveis.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Estratégia mock-first (Tier 1) combinada com seed de dados real (Tier 2).</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Arquitetura modular pronta para crescer por domínio funcional.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-case="" style="border-bottom:1px solid var(--line)">
+        <button class="case-head" data-case-head="" type="button" aria-expanded="false" style="width:100%;text-align:left;background:none;border:none;color:inherit;cursor:pointer;display:flex;align-items:center;gap:15px;padding:18px 20px;font-family:var(--display);transition:background .2s">
+          <span style="width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:13px;flex-shrink:0">✓</span>
+          <span style="font-family:var(--mono);font-size:14px;color:var(--paper);overflow-wrap:anywhere"><span style="color:var(--accent)">assert</span>(visao_de_seguranca)</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-left:auto;letter-spacing:.1em;flex-shrink:0">PASS</span>
+          <span data-chev="" style="color:var(--slate-d);transition:transform .3s;flex-shrink:0;font-size:13px">▸</span>
+        </button>
+        <div data-case-body="" style="max-height:0;overflow:hidden;transition:max-height .42s ease">
+          <div style="padding:2px clamp(18px,4vw,28px) 24px clamp(18px,5vw,59px);color:var(--slate);font-size:14.5px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;display:block;margin-bottom:10px">// evidência</span>
+            QA que pensa em risco antes do incidente.
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Liderei auditoria automatizada cobrindo 57 endpoints e 96 cenários de segurança.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Vulnerabilidades críticas identificadas e reportadas antes de exposição externa.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Escopo que, manualmente, levaria semanas — entregue em 1 dia útil com relatório executivo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-case="" style="border-bottom:1px solid var(--line)">
+        <button class="case-head" data-case-head="" type="button" aria-expanded="false" style="width:100%;text-align:left;background:none;border:none;color:inherit;cursor:pointer;display:flex;align-items:center;gap:15px;padding:18px 20px;font-family:var(--display);transition:background .2s">
+          <span style="width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:13px;flex-shrink:0">✓</span>
+          <span style="font-family:var(--mono);font-size:14px;color:var(--paper);overflow-wrap:anywhere"><span style="color:var(--accent)">assert</span>(inovacao_com_ia)</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-left:auto;letter-spacing:.1em;flex-shrink:0">PASS</span>
+          <span data-chev="" style="color:var(--slate-d);transition:transform .3s;flex-shrink:0;font-size:13px">▸</span>
+        </button>
+        <div data-case-body="" style="max-height:0;overflow:hidden;transition:max-height .42s ease">
+          <div style="padding:2px clamp(18px,4vw,28px) 24px clamp(18px,5vw,59px);color:var(--slate);font-size:14.5px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;display:block;margin-bottom:10px">// evidência</span>
+            IA como multiplicador — não como atalho sem dono.
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Pipeline multi-agente com 46 agentes e 27 skills cobrindo QA, planejamento, banco, segurança e documentação.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Todo artefato gerado por IA é validado, refinado e aprovado por mim antes de qualquer encerramento.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Processo declarativo e auditável: o "como" fica registrado e repetível.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-case="" style="border-bottom:1px solid var(--line)">
+        <button class="case-head" data-case-head="" type="button" aria-expanded="false" style="width:100%;text-align:left;background:none;border:none;color:inherit;cursor:pointer;display:flex;align-items:center;gap:15px;padding:18px 20px;font-family:var(--display);transition:background .2s">
+          <span style="width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:13px;flex-shrink:0">✓</span>
+          <span style="font-family:var(--mono);font-size:14px;color:var(--paper);overflow-wrap:anywhere"><span style="color:var(--accent)">assert</span>(qualidade_e_rastreabilidade)</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-left:auto;letter-spacing:.1em;flex-shrink:0">PASS</span>
+          <span data-chev="" style="color:var(--slate-d);transition:transform .3s;flex-shrink:0;font-size:13px">▸</span>
+        </button>
+        <div data-case-body="" style="max-height:0;overflow:hidden;transition:max-height .42s ease">
+          <div style="padding:2px clamp(18px,4vw,28px) 24px clamp(18px,5vw,59px);color:var(--slate);font-size:14.5px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;display:block;margin-bottom:10px">// evidência</span>
+            Resultado que se sustenta sob escrutínio.
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Bugs barrados antes do deploy, com causa raiz no código — custo de correção até 10x menor.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Matriz auditável por demanda: smoke, fluxo principal, alternativo e erros.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Regressão automatizada protegendo fluxos críticos a cada merge.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-case="" style="border-bottom:1px solid var(--line)">
+        <button class="case-head" data-case-head="" type="button" aria-expanded="false" style="width:100%;text-align:left;background:none;border:none;color:inherit;cursor:pointer;display:flex;align-items:center;gap:15px;padding:18px 20px;font-family:var(--display);transition:background .2s">
+          <span style="width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:13px;flex-shrink:0">✓</span>
+          <span style="font-family:var(--mono);font-size:14px;color:var(--paper);overflow-wrap:anywhere"><span style="color:var(--accent)">assert</span>(colaboracao_cross_functional)</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-left:auto;letter-spacing:.1em;flex-shrink:0">PASS</span>
+          <span data-chev="" style="color:var(--slate-d);transition:transform .3s;flex-shrink:0;font-size:13px">▸</span>
+        </button>
+        <div data-case-body="" style="max-height:0;overflow:hidden;transition:max-height .42s ease">
+          <div style="padding:2px clamp(18px,4vw,28px) 24px clamp(18px,5vw,59px);color:var(--slate);font-size:14.5px">
+            <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;display:block;margin-bottom:10px">// evidência</span>
+            Conecto as pontas que destravam a entrega.
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Trabalho próximo de Dev, DBA, DevOps e Product na resolução de problemas.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Produzo documentação técnica consumível (Swagger, HTML e PDF) sem depender de servidor.</li>
+              <li style="position:relative;padding-left:18px"><span style="position:absolute;left:0;color:var(--accent)">›</span>Diagnósticos de sustentação com linha do tempo e causa raiz reconstruídas de forma independente.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 04 · MÉTODO / IA ░░ -->
+<section id="ia" data-screen-label="Método IA" style="position:relative;z-index:1;padding:96px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div data-reveal="" style="max-width:64ch;margin-bottom:44px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>04 · O método</span>
+      <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px">Como a IA entra no meu QA</h2>
+      <p style="color:var(--slate);font-size:16px;max-width:62ch">Um pipeline declarativo onde cada fase gera um artefato. A IA acelera; o julgamento é meu.</p>
+    </div>
+
+    <div data-reveal="" style="display:flex;align-items:stretch;gap:10px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 12px">
+      <div style="display:flex;align-items:center;min-width:140px;flex:1">
+        <div class="pipe" style="flex:1;border:1px solid var(--line);border-radius:12px;padding:16px 14px;background:var(--glass);backdrop-filter:blur(6px);transition:border-color .25s,transform .25s">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--slate-d)">fase 0</div>
+          <div style="font-weight:600;font-size:14.5px;margin:8px 0 4px">Análise</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">contexto + PRD</div>
+        </div>
+        <span style="color:var(--slate-d);padding:0 5px;flex-shrink:0">→</span>
+      </div>
+      <div style="display:flex;align-items:center;min-width:140px;flex:1">
+        <div class="pipe" style="flex:1;border:1px solid var(--line);border-radius:12px;padding:16px 14px;background:var(--glass);backdrop-filter:blur(6px);transition:border-color .25s,transform .25s">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--slate-d)">fase 1</div>
+          <div style="font-weight:600;font-size:14.5px;margin:8px 0 4px">Tech Spec</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">techspec.md</div>
+        </div>
+        <span style="color:var(--slate-d);padding:0 5px;flex-shrink:0">→</span>
+      </div>
+      <div style="display:flex;align-items:center;min-width:140px;flex:1">
+        <div class="pipe" style="flex:1;border:1px solid var(--line);border-radius:12px;padding:16px 14px;background:var(--glass);backdrop-filter:blur(6px);transition:border-color .25s,transform .25s">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--slate-d)">fase 2</div>
+          <div style="font-weight:600;font-size:14.5px;margin:8px 0 4px">Tarefas</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">tasks.md</div>
+        </div>
+        <span style="color:var(--slate-d);padding:0 5px;flex-shrink:0">→</span>
+      </div>
+      <div style="display:flex;align-items:center;min-width:140px;flex:1">
+        <div class="pipe" style="flex:1;border:1px solid var(--line);border-radius:12px;padding:16px 14px;background:var(--glass);backdrop-filter:blur(6px);transition:border-color .25s,transform .25s">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--slate-d)">fase 3</div>
+          <div style="font-weight:600;font-size:14.5px;margin:8px 0 4px">Execução</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">Playwright</div>
+        </div>
+        <span style="color:var(--slate-d);padding:0 5px;flex-shrink:0">→</span>
+      </div>
+      <div style="display:flex;align-items:center;min-width:140px;flex:1">
+        <div class="pipe" style="flex:1;border:1px solid var(--line);border-radius:12px;padding:16px 14px;background:var(--glass);backdrop-filter:blur(6px);transition:border-color .25s,transform .25s">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--slate-d)">fase 4</div>
+          <div style="font-weight:600;font-size:14.5px;margin:8px 0 4px">Evidência</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">screenshots</div>
+        </div>
+        <span style="color:var(--slate-d);padding:0 5px;flex-shrink:0">→</span>
+      </div>
+      <div style="display:flex;align-items:center;min-width:140px;flex:1">
+        <div class="pipe" style="flex:1;border:1px solid var(--line);border-radius:12px;padding:16px 14px;background:var(--glass);backdrop-filter:blur(6px);transition:border-color .25s,transform .25s">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--slate-d)">fase 5</div>
+          <div style="font-weight:600;font-size:14.5px;margin:8px 0 4px">Relatório</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent)">+ roteiro · PDF</div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;align-items:center;margin-top:42px">
+      <div style="perspective:1400px;height:340px;display:flex;align-items:center;justify-content:center">
+        <div>
+          <div id="deck" style="position:relative;width:240px;height:154px;transform-style:preserve-3d;transform:rotateX(16deg) rotateY(-26deg);animation:deckFloat 7s ease-in-out infinite;margin:0 auto">
+            <div style="position:absolute;inset:0;border-radius:16px;border:1px solid var(--accent);background:linear-gradient(135deg, rgba(13,24,46,.94), rgba(8,14,26,.94));box-shadow:0 26px 52px rgba(0,0,0,.5), 0 0 26px rgba(79,140,255,.18);padding:15px 18px;display:flex;flex-direction:column;justify-content:space-between;backface-visibility:hidden;transform:translateZ(84px)">
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:500">Specs · testes</span><span style="font-family:var(--mono);font-size:10.5px;color:var(--accent);border:1px solid var(--accent-line);border-radius:6px;padding:2px 7px">camada 1</span></div>
+              <span style="font-family:var(--mono);font-size:10.5px;color:var(--slate-d)">cenários executáveis</span>
+            </div>
+            <div style="position:absolute;inset:0;border-radius:16px;border:1px solid var(--accent-line);background:linear-gradient(135deg, rgba(13,24,46,.92), rgba(8,14,26,.92));box-shadow:0 20px 40px rgba(0,0,0,.4);padding:15px 18px;display:flex;flex-direction:column;justify-content:space-between;backface-visibility:hidden;transform:translateZ(28px)">
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-family:var(--mono);font-size:13px;color:var(--paper);font-weight:500">Page Objects</span><span style="font-family:var(--mono);font-size:10.5px;color:var(--accent);border:1px solid var(--accent-line);border-radius:6px;padding:2px 7px">camada 2</span></div>
+              <span style="font-family:var(--mono);font-size:10.5px;color:var(--slate-d)">interação com a tela</span>
+            </div>
+            <div style="position:absolute;inset:0;border-radius:16px;border:1px solid var(--accent-line);background:linear-gradient(135deg, rgba(13,24,46,.9), rgba(8,14,26,.9));box-shadow:0 20px 40px rgba(0,0,0,.4);padding:15px 18px;display:flex;flex-direction:column;justify-content:space-between;backface-visibility:hidden;transform:translateZ(-28px)">
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-family:var(--mono);font-size:13px;color:var(--paper);font-weight:500">Helpers</span><span style="font-family:var(--mono);font-size:10.5px;color:var(--accent);border:1px solid var(--accent-line);border-radius:6px;padding:2px 7px">camada 3</span></div>
+              <span style="font-family:var(--mono);font-size:10.5px;color:var(--slate-d)">grid · mock · reporter</span>
+            </div>
+            <div style="position:absolute;inset:0;border-radius:16px;border:1px solid var(--accent-line);background:linear-gradient(135deg, rgba(13,24,46,.88), rgba(8,14,26,.88));box-shadow:0 20px 40px rgba(0,0,0,.4);padding:15px 18px;display:flex;flex-direction:column;justify-content:space-between;backface-visibility:hidden;transform:translateZ(-84px);opacity:.86">
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-family:var(--mono);font-size:13px;color:var(--paper);font-weight:500">Fixtures · dados</span><span style="font-family:var(--mono);font-size:10.5px;color:var(--accent);border:1px solid var(--accent-line);border-radius:6px;padding:2px 7px">camada 4</span></div>
+              <span style="font-family:var(--mono);font-size:10.5px;color:var(--slate-d)">Tier 1 mock · Tier 2 seed</span>
+            </div>
+          </div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--slate-d);text-align:center;margin-top:18px;letter-spacing:.04em">arquitetura de testes em camadas</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--glass);backdrop-filter:blur(8px)">
+          <h4 style="font-size:15px;margin-bottom:8px;display:flex;align-items:center;gap:9px;font-weight:600"><span style="font-family:var(--mono);color:var(--accent)">[ ]</span> Fábrica multi-agente</h4>
+          <p style="color:var(--slate);font-size:14px">Agentes e skills versionados executam tarefas bem definidas e repetíveis — de geração de requisitos a diagnóstico de banco. Conhecimento do time vira código auditável, não memória de uma pessoa só.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+            <span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:3px 9px;border-radius:999px">QA</span><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:3px 9px;border-radius:999px">planejamento</span><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:3px 9px;border-radius:999px">segurança</span><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:3px 9px;border-radius:999px">documentação</span><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:3px 9px;border-radius:999px">E2E</span>
+          </div>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--glass);backdrop-filter:blur(8px)">
+          <h4 style="font-size:15px;margin-bottom:8px;display:flex;align-items:center;gap:9px;font-weight:600"><span style="font-family:var(--mono);color:var(--accent)">{ }</span> Humano no comando</h4>
+          <p style="color:var(--slate);font-size:14px">A IA não substitui o engenheiro. Em toda demanda, eu refino cenários, valido artefatos e aprovo o resultado antes de encerrar. O ganho é velocidade e cobertura — sem abrir mão de responsabilidade.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+            <span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:3px 9px;border-radius:999px">validação</span><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:3px 9px;border-radius:999px">supervisão</span><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:3px 9px;border-radius:999px">accountability</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 05 · RADAR ░░ -->
+<section id="radar" data-screen-label="Senioridade" style="position:relative;z-index:1;padding:96px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div data-reveal="" style="max-width:64ch;margin-bottom:44px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>05 · A distância do nível</span>
+      <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px">Onde estou em relação ao esperado</h2>
+      <p style="color:var(--slate);font-size:16px;max-width:62ch">Comparação entre o nível que se espera de um Pleno e o que sustento hoje, nas dimensões de senioridade.</p>
+    </div>
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;align-items:center">
+      <svg id="radarChart" viewBox="0 0 440 380" role="img" aria-label="Radar de competências: Marco hoje supera o nível Pleno esperado em todas as dimensões" style="width:100%;height:auto;display:block"></svg>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:14px;height:14px;border-radius:4px;flex-shrink:0;margin-top:3px;background:var(--accent)"></span><div><b style="font-size:14px">Marco hoje</b><p style="font-size:13px;color:var(--slate);margin-top:2px">O nível que entrego e sustento de forma consistente.</p></div></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:14px;height:14px;border-radius:4px;flex-shrink:0;margin-top:3px;background:transparent;border:1.5px solid var(--slate-d)"></span><div><b style="font-size:14px">Pleno esperado</b><p style="font-size:13px;color:var(--slate);margin-top:2px">A régua do cargo atual — superada em todas as dimensões.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 06 · TRAJETÓRIA ░░ -->
+<section id="trajetoria" data-screen-label="Trajetória" style="position:relative;z-index:1;padding:96px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div data-reveal="" style="max-width:64ch;margin-bottom:40px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>06 · 12 anos</span>
+      <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px">A trajetória que sustenta o pedido</h2>
+    </div>
+    <div data-reveal="" style="position:relative;padding-left:28px;margin-top:8px">
+      <div style="position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:var(--line)"></div>
+      <div style="position:relative;padding:0 0 32px 22px">
+        <span style="position:absolute;left:-25px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--bg0);border:2px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)"></span>
+        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em">Fundação</div>
+        <h4 style="font-size:17px;margin:6px 0 6px;font-weight:600">Base de QA e conhecimento de produto</h4>
+        <p style="color:var(--slate);font-size:14.5px;max-width:62ch">Anos construindo entendimento profundo do domínio, dos fluxos críticos e das regras de negócio — o lastro que torna cada teste relevante.</p>
+      </div>
+      <div style="position:relative;padding:0 0 32px 22px">
+        <span style="position:absolute;left:-25px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--bg0);border:2px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)"></span>
+        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em">Automação</div>
+        <h4 style="font-size:17px;margin:6px 0 6px;font-weight:600">Do manual ao automatizado</h4>
+        <p style="color:var(--slate);font-size:14.5px;max-width:62ch">Evolução para automação de testes de API e E2E com Playwright e TypeScript, arquitetura em camadas e regressão protegendo o que mais importa.</p>
+      </div>
+      <div style="position:relative;padding:0 0 32px 22px">
+        <span style="position:absolute;left:-25px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--bg0);border:2px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)"></span>
+        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em">Ferramentas</div>
+        <h4 style="font-size:17px;margin:6px 0 6px;font-weight:600">Construindo o que o time usa</h4>
+        <p style="color:var(--slate);font-size:14.5px;max-width:62ch">Criação de frameworks, dashboards de resultado e documentação viva — reduzindo a dependência de pessoas específicas e padronizando a qualidade.</p>
+      </div>
+      <div style="position:relative;padding:0 0 32px 22px">
+        <span style="position:absolute;left:-25px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--bg0);border:2px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)"></span>
+        <div style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em">Hoje</div>
+        <h4 style="font-size:17px;margin:6px 0 6px;font-weight:600">QA aumentado por IA, com liderança técnica</h4>
+        <p style="color:var(--slate);font-size:14.5px;max-width:62ch">Pipeline multi-agente sob supervisão humana, auditoria de segurança, mentoria do time e padrões de fábrica. Operando, na prática, como Sênior.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 07 · REPERTÓRIO TÉCNICO ░░ -->
+<section id="conhecimento" data-screen-label="Repertório" style="position:relative;z-index:1;padding:96px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div data-reveal="" style="max-width:64ch;margin-bottom:44px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>07 · Repertório técnico</span>
+      <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px">O que construí — e o que isso me ensinou</h2>
+      <p style="color:var(--slate);font-size:16px;max-width:64ch">Para além da automação de QA, projetei e levei à produção produtos completos. O que importa aqui não são os apps em si, mas o repertório técnico que ficou — competências transferíveis que sustentam decisões de arquitetura, segurança e qualidade.</p>
+    </div>
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <div class="doc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent)">// dom_01</span><h4 style="font-size:17px;font-weight:600;line-height:1.25">Arquitetura full-stack de produto</h4><p style="font-size:14px;color:var(--slate);line-height:1.55">Stacks modernas ponta a ponta — front em TypeScript/React e back com API tipada, ORM e PostgreSQL — sob o princípio de o frontend depender de um backend confiável.</p></div><div class="doc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent)">// dom_02</span><h4 style="font-size:17px;font-weight:600;line-height:1.25">Segurança aplicada por design</h4><p style="font-size:14px;color:var(--slate);line-height:1.55">OWASP Top 10 incorporado desde a modelagem: isolamento multi-tenant, controle de acesso por papel e dados protegidos no nível da linha (RLS).</p></div><div class="doc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent)">// dom_03</span><h4 style="font-size:17px;font-weight:600;line-height:1.25">Integrações e meios de pagamento</h4><p style="font-size:14px;color:var(--slate);line-height:1.55">Fluxos de pagamento (PIX), storage em nuvem, webhooks e serviços externos integrados de ponta a ponta, com tratamento de borda e idempotência.</p></div><div class="doc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent)">// dom_04</span><h4 style="font-size:17px;font-weight:600;line-height:1.25">Engenharia de IA aplicada</h4><p style="font-size:14px;color:var(--slate);line-height:1.55">Pipelines multi-agente, engenharia de prompts e procedimentos versionados que orquestram planejamento, execução e revisão — sempre com aprovação humana no fim.</p></div><div class="doc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent)">// dom_05</span><h4 style="font-size:17px;font-weight:600;line-height:1.25">Entrega web e mobile</h4><p style="font-size:14px;color:var(--slate);line-height:1.55">Produtos completos levados do protótipo à produção em ambas as plataformas, com a mesma disciplina de qualidade e rastreabilidade dos testes.</p></div><div class="doc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent)">// dom_06</span><h4 style="font-size:17px;font-weight:600;line-height:1.25">Documentação viva e DX</h4><p style="font-size:14px;color:var(--slate);line-height:1.55">Sistemas de documentação embarcada com ancoragem resiliente, que preservam o "como fazer" e encurtam o onboarding de quem chega depois.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 08 · DOCUMENTO FORMAL — MERCADO × PERFIL ░░ -->
+<section id="mercado" data-screen-label="Mercado × Perfil" style="position:relative;z-index:1;padding:96px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px)">
+    <div data-reveal="" style="max-width:64ch;margin-bottom:40px">
+      <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>08 · Documento formal</span>
+      <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px">Mercado × Perfil: onde meu trabalho se posiciona</h2>
+      <p style="color:var(--slate);font-size:16px;max-width:64ch">Benchmark salarial de QA Sênior no Brasil (2026) confrontado com o perfil entregue. Este documento acompanha o PDF como base objetiva para a conversa de promoção.</p>
+    </div>
+    <div data-reveal="" class="doc-card" style="border:1px solid var(--line-2);border-radius:20px;background:rgba(8,14,26,.55);backdrop-filter:blur(12px);padding:clamp(22px,3.4vw,40px)">
+      <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--slate-d);border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:26px">
+        <span>DOSSIÊ · MERCADO × PERFIL</span><span>QA SÊNIOR · BR · 2026</span>
+      </div>
+      <h3 style="font-size:13px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px">A · Referência de mercado</h3>
+      <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;min-width:520px">
+        <thead><tr><th style="text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate-d);font-weight:500;padding:0 16px 12px 0;border-bottom:1px solid var(--line-2)">Fonte</th><th style="text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate-d);font-weight:500;padding:0 16px 12px 0;border-bottom:1px solid var(--line-2)">Faixa base mensal</th><th style="text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate-d);font-weight:500;padding:0 16px 12px 0;border-bottom:1px solid var(--line-2)">Observações</th></tr></thead>
+        <tbody><tr><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--paper);font-weight:600;vertical-align:top">Glassdoor — Analista de QA Sênior</td><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--slate);font-weight:400;vertical-align:top">R$ 7 mil – R$ 11 mil/mês</td><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--slate);font-weight:400;vertical-align:top">Média ~R$ 9.833 · 90º percentil ~R$ 14.808 · 266 salários (mai/2026)</td></tr><tr><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--paper);font-weight:600;vertical-align:top">Trybe — perfil sênior</td><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--slate);font-weight:400;vertical-align:top">Mediana ~R$ 7.500</td><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--slate);font-weight:400;vertical-align:top">Referência de mercado para o nível</td></tr><tr><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--paper);font-weight:600;vertical-align:top">Consolidado de mercado</td><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--slate);font-weight:400;vertical-align:top">Faixa típica R$ 7 mil – R$ 11 mil</td><td style="padding:13px 16px 13px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--slate);font-weight:400;vertical-align:top">Varia por porte da empresa, modelo de contratação e região</td></tr></tbody>
+      </table></div>
+      <h3 style="font-size:13px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:34px 0 8px">B · Perfil → posição na faixa</h3>
+      <ul style="list-style:none;margin:0 0 16px"><li style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)"><span style="color:var(--accent);font-family:var(--mono);font-size:13px;margin-top:2px;flex-shrink:0">→</span><span style="font-size:14px;line-height:1.5"><b style="color:var(--paper);font-weight:600">12 anos de domínio de produto</b> <span style="color:var(--slate)">— lastro de contexto que torna cada teste relevante</span></span></li><li style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)"><span style="color:var(--accent);font-family:var(--mono);font-size:13px;margin-top:2px;flex-shrink:0">→</span><span style="font-size:14px;line-height:1.5"><b style="color:var(--paper);font-weight:600">Automação Playwright/TypeScript em camadas</b> <span style="color:var(--slate)">— perfil técnico escasso no mercado de QA</span></span></li><li style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)"><span style="color:var(--accent);font-family:var(--mono);font-size:13px;margin-top:2px;flex-shrink:0">→</span><span style="font-size:14px;line-height:1.5"><b style="color:var(--paper);font-weight:600">IA aplicada a QA — pipeline multi-agente sob supervisão</b> <span style="color:var(--slate)">— competência rara que puxa o salário para o topo da faixa</span></span></li><li style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)"><span style="color:var(--accent);font-family:var(--mono);font-size:13px;margin-top:2px;flex-shrink:0">→</span><span style="font-size:14px;line-height:1.5"><b style="color:var(--paper);font-weight:600">Auditoria de segurança (OWASP, 57 endpoints)</b> <span style="color:var(--slate)">— amplia o valor para além do QA tradicional</span></span></li></ul>
+      <p style="font-size:14.5px;color:var(--paper);background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;padding:14px 18px;line-height:1.55"><b>Conclusão:</b> o perfil — automação somada a IA aplicada, perfil escasso — se posiciona na <b style="color:var(--accent-2)">parte alta da faixa</b>, não na mediana.</p>
+      <p style="margin-top:22px;font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--slate-d)">Fontes de mercado: Glassdoor e Trybe (consultados em 2026). Faixas variam conforme porte da empresa, modelo de contratação e região. Valores de referência de mercado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 09 · O PEDIDO ░░ -->
+<section id="pedido" data-screen-label="O pedido" style="position:relative;z-index:1;padding:104px 0 70px">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px);text-align:center">
+    <span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);justify-content:center"><span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>09 · O pedido</span>
+    <div style="font-family:var(--display);font-weight:600;font-size:clamp(30px,4.8vw,58px);line-height:1.08;letter-spacing:-.02em;margin:18px auto 22px;max-width:20ch;text-wrap:balance">Pronto para o título que o <em style="font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent-2)">trabalho</em> já mostra.</div>
+    <p style="color:var(--slate);max-width:46ch;margin:0 auto 34px;font-size:16px">A suíte passou. As evidências estão acima — e os relatórios completos, com os números detalhados, estão disponíveis internamente. Vamos conversar sobre a promoção a Sênior?</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="btn-primary" href="mailto:marcovdbraida@gmail.com?subject=Conversa%20sobre%20promo%C3%A7%C3%A3o%20a%20QA%20S%C3%AAnior" style="font-family:var(--mono);font-size:13px;padding:14px 24px;border-radius:10px;border:1px solid var(--accent);background:var(--accent);color:#05080f;font-weight:500;text-decoration:none;box-shadow:0 0 24px rgba(79,140,255,.28);transition:transform .2s,box-shadow .2s">Falar comigo</a>
+      <a class="btn-ghost" href="https://www.linkedin.com/in/SEU-PERFIL-LINKEDIN" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:13px;padding:14px 24px;border-radius:10px;border:1px solid var(--accent-line);background:transparent;color:var(--accent);text-decoration:none;transition:transform .2s,background .2s">LinkedIn</a>
+      <a class="btn-ghost" href="#" onclick="window.print();return false;" style="font-family:var(--mono);font-size:13px;padding:14px 24px;border-radius:10px;border:1px solid var(--accent-line);background:transparent;color:var(--accent);text-decoration:none;transition:transform .2s,background .2s">Salvar como PDF</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer style="position:relative;z-index:1;border-top:1px solid var(--line);padding:26px 0">
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,32px);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--slate-d)">
+    <span>Marco Braida · Automation Test Developer</span>
+    <span>currículo visual · 100% estático · sem rastreamento</span>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- props (antes editáveis no editor de design) ----
+  var ACCENT = '#4f8cff';
+  var PARTICLE_COUNT = 'high';   // 'low' | 'med' | 'high'
+  var AUTO_ROTATE = true;
+  var HUD_FRAME = true;
+  var accentRgb = [79,140,255];
+
+  // ---- apply accent theme ----
+  (function applyAccent(hex){
+    function hexToRgb(h){ h=h.replace('#',''); if(h.length===3)h=h.split('').map(function(x){return x+x;}).join(''); var n=parseInt(h,16); return [(n>>16)&255,(n>>8)&255,n&255]; }
+    var rgb = hexToRgb(hex);
+    var l = rgb.map(function(c){ return Math.round(c+(255-c)*0.42); });
+    var r = document.documentElement.style;
+    r.setProperty('--accent', hex);
+    r.setProperty('--accent-2', 'rgb('+l.join(',')+')');
+    r.setProperty('--accent-deep', hex);
+    r.setProperty('--accent-soft', 'rgba('+rgb.join(',')+',0.12)');
+    r.setProperty('--accent-line', 'rgba('+rgb.join(',')+',0.32)');
+    accentRgb = rgb;
+  })(ACCENT);
+  if (!HUD_FRAME) { var hf = document.getElementById('hudFrame'); if (hf) hf.style.display = 'none'; }
+
+  // ---- particle globe (canvas 2D, sem lib externa) ----
+  (function buildGlobe(){
+    var canvas = document.getElementById('globe');
+    if (!canvas) return;
+    var wrap = canvas.parentElement;
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    var density = PARTICLE_COUNT;
+    var autoRotate = AUTO_ROTATE !== false;
+    var DPR = Math.min(window.devicePixelRatio || 1, 2);
+    var rgb = accentRgb || [79,140,255];
+
+    function sprite(r,gc,b){
+      var s=document.createElement('canvas'); s.width=s.height=32; var c2=s.getContext('2d');
+      var gr=c2.createRadialGradient(16,16,0,16,16,16);
+      gr.addColorStop(0,'rgba('+r+','+gc+','+b+',1)');
+      gr.addColorStop(.35,'rgba('+r+','+gc+','+b+',.62)');
+      gr.addColorStop(1,'rgba('+r+','+gc+','+b+',0)');
+      c2.fillStyle=gr; c2.fillRect(0,0,32,32); return s;
+    }
+    var spA=sprite(rgb[0],rgb[1],rgb[2]), spB=sprite(206,224,255), spG=sprite(243,201,105);
+
+    var base = density==='low'?1300:(density==='med'?2200:3400);
+    if ((wrap.clientWidth||window.innerWidth) < 760) base = Math.round(base*0.62);
+
+    var pts=[];
+    for (var i=0;i<base;i++){
+      var t=i/(base-1), inc=Math.acos(1-2*t), az=Math.PI*(1+Math.sqrt(5))*i;
+      var jit=1+(Math.random()-0.5)*0.10;
+      var pick=Math.random(), sp = pick<0.07?spG:(pick<0.40?spB:spA);
+      pts.push({x:Math.sin(inc)*Math.cos(az)*jit, y:Math.cos(inc)*jit, z:Math.sin(inc)*Math.sin(az)*jit, sp:sp, tw:Math.random()*Math.PI*2});
+    }
+
+    var W=0,H=0,cx=0,cy=0,radius=0,focal=0;
+    function layout(){
+      W=wrap.clientWidth||window.innerWidth; H=wrap.clientHeight||window.innerHeight;
+      canvas.width=Math.round(W*DPR); canvas.height=Math.round(H*DPR);
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+      radius=Math.min(W,H)*0.46;
+      cx = W>980 ? W*0.66 : W*0.5;
+      cy = W>980 ? H*0.46 : H*0.42;
+      focal = radius*3.2;
+    }
+    layout();
+    window.addEventListener('resize', layout);
+
+    var tX=0,tY=0,cX=0,cY=0;
+    window.addEventListener('pointermove', function(e){ tY=(e.clientX/window.innerWidth-0.5); tX=(e.clientY/window.innerHeight-0.5); });
+
+    var angY=0.6, angX=-0.18, frame=0;
+    function draw(){
+      frame++;
+      cX+=(tX-cX)*0.05; cY+=(tY-cY)*0.05;
+      if(autoRotate && !reduce) angY+=0.0032;
+      var ay=angY + cY*0.5, ax=angX + cX*0.55;
+      var cosY=Math.cos(ay), sinY=Math.sin(ay), cosX=Math.cos(ax), sinX=Math.sin(ax);
+      ctx.clearRect(0,0,W,H);
+      ctx.globalCompositeOperation='lighter';
+      var halo=ctx.createRadialGradient(cx,cy,0,cx,cy,radius*1.2);
+      halo.addColorStop(0,'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+',0.18)');
+      halo.addColorStop(0.45,'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+',0.06)');
+      halo.addColorStop(1,'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+',0)');
+      ctx.fillStyle=halo; ctx.beginPath(); ctx.arc(cx,cy,radius*1.2,0,Math.PI*2); ctx.fill();
+      for (var i=0;i<pts.length;i++){
+        var p=pts[i];
+        var x1=p.x*cosY + p.z*sinY;
+        var z1=-p.x*sinY + p.z*cosY;
+        var y1=p.y*cosX - z1*sinX;
+        var z2=p.y*sinX + z1*cosX;
+        p._x=x1; p._y=y1; p._z=z2;
+      }
+      pts.sort(function(a,b){return a._z-b._z;});
+      var glob = reduce?1:(0.9+Math.sin(frame*0.03)*0.08);
+      for (var k=0;k<pts.length;k++){
+        var q=pts[k];
+        var pf=focal/(focal + q._z*radius);
+        var sx=cx + q._x*radius*pf;
+        var sy=cy + q._y*radius*pf;
+        var depth=(q._z+1)/2;
+        var sz=(1.6+3.3*depth)*pf;
+        var tw=reduce?1:(0.72+0.28*Math.sin(frame*0.05+q.tw));
+        ctx.globalAlpha=Math.max(0,(0.3+0.7*depth)*glob*tw);
+        ctx.drawImage(q.sp, sx-sz, sy-sz, sz*2, sz*2);
+      }
+      ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
+      if(!reduce) requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // ---- reveals ----
+  var revs = [].slice.call(document.querySelectorAll('[data-reveal]'));
+  revs.forEach(function(el){
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+    el.style.willChange = 'opacity, transform';
+  });
+  if (reduce) {
+    revs.forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; });
+  } else {
+    var ro = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='none'; ro.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -10% 0px', threshold:.08});
+    revs.forEach(function(el){ ro.observe(el); });
+  }
+
+  // ---- counters ----
+  function animateNum(el){
+    var to = parseInt(el.getAttribute('data-to'),10); if(isNaN(to)) return;
+    if(reduce){ el.textContent = to; return; }
+    var dur=1150, t0=null;
+    function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3); el.textContent=Math.round(to*e); if(p<1) requestAnimationFrame(step); else el.textContent=to; }
+    requestAnimationFrame(step);
+  }
+  var co = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ animateNum(e.target); co.unobserve(e.target); } });
+  }, {threshold:.5});
+  [].forEach.call(document.querySelectorAll('[data-to]'), function(el){ co.observe(el); });
+
+  // ---- accordion ----
+  var heads = [].slice.call(document.querySelectorAll('[data-case-head]'));
+  var allCases = [].slice.call(document.querySelectorAll('[data-case]'));
+  if (allCases.length) allCases[allCases.length-1].style.borderBottom = 'none';
+  heads.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = btn.closest('[data-case]');
+      var body = card.querySelector('[data-case-body]');
+      var chev = btn.querySelector('[data-chev]');
+      var open = body.style.maxHeight && body.style.maxHeight !== '0px';
+      if (open) { body.style.maxHeight='0px'; if(chev)chev.style.transform='none'; btn.setAttribute('aria-expanded','false'); }
+      else { body.style.maxHeight = body.scrollHeight + 'px'; if(chev)chev.style.transform='rotate(90deg)'; btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  // ---- nav solid + scroll-spy + HUD readout ----
+  var nav = document.getElementById('nav');
+  var links = [].slice.call(document.querySelectorAll('#nav a[data-sec]'));
+  var secs = [].slice.call(document.querySelectorAll('section[id]'));
+  var hudScroll = document.getElementById('hudScroll');
+  var hudSec = document.getElementById('hudSec');
+  function onScroll(){
+    var solid = window.scrollY > 40;
+    nav.style.background = solid ? 'rgba(5,8,15,.82)' : 'transparent';
+    nav.style.borderBottomColor = solid ? 'var(--line)' : 'transparent';
+    nav.style.backdropFilter = solid ? 'blur(10px)' : 'none';
+    nav.style.webkitBackdropFilter = solid ? 'blur(10px)' : 'none';
+    if (hudScroll){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = h>0 ? Math.round(window.scrollY/h*100) : 0;
+      hudScroll.textContent = 'SCROLL ' + pct + '%';
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){
+          var on = a.getAttribute('data-sec')===e.target.id;
+          a.style.color = on ? 'var(--accent)' : 'var(--slate)';
+          a.style.background = on ? 'var(--accent-soft)' : 'transparent';
+        });
+        var idx = secs.indexOf(e.target);
+        if (hudSec && idx>=0) hudSec.textContent = 'SEC ' + String(idx+1).padStart(2,'0') + '/0' + secs.length;
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){ spy.observe(s); });
+
+  // ---- radar ----
+  (function buildRadar(){
+    var svg = document.getElementById('radarChart'); if(!svg) return;
+    var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#4f8cff';
+    var rgb = accentRgb || [79,140,255];
+    var fill = 'rgba('+rgb.join(',')+',0.16)';
+    var cx=205, cy=190, R=130;
+    var axes=['Liderança\ntécnica','Autonomia','Mentoria','Arquitetura','Segurança','Inovação\ncom IA'];
+    var me=[0.95,0.92,0.88,0.94,0.85,0.97], pleno=[0.55,0.60,0.45,0.55,0.40,0.50], n=axes.length;
+    function pt(i,r){ var a=-Math.PI/2 + i*2*Math.PI/n; return [cx+Math.cos(a)*r, cy+Math.sin(a)*r]; }
+    var frag='';
+    for (var gg=1; gg<=4; gg++){ var rr=R*gg/4, p=''; for(var i=0;i<n;i++){ var q=pt(i,rr); p+=q[0].toFixed(1)+','+q[1].toFixed(1)+' '; } frag+='<polygon points="'+p+'" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>'; }
+    for (var k=0;k<n;k++){
+      var e=pt(k,R);
+      frag+='<line x1="'+cx+'" y1="'+cy+'" x2="'+e[0].toFixed(1)+'" y2="'+e[1].toFixed(1)+'" stroke="rgba(255,255,255,.08)"/>';
+      var lp=pt(k,R+26), lines=axes[k].split('\n');
+      var anchor = Math.abs(lp[0]-cx)<6?'middle':(lp[0]>cx?'start':'end');
+      var ty=lp[1]-(lines.length-1)*6;
+      var tEl='<text font-family="JetBrains Mono, monospace" font-size="10.5" fill="#cdd8ea" x="'+lp[0].toFixed(1)+'" y="'+ty.toFixed(1)+'" text-anchor="'+anchor+'">';
+      lines.forEach(function(s,idx){ tEl+='<tspan x="'+lp[0].toFixed(1)+'" dy="'+(idx===0?0:12)+'">'+s+'</tspan>'; });
+      tEl+='</text>'; frag+=tEl;
+    }
+    function poly(v){ var s=''; for(var i=0;i<n;i++){ var q=pt(i,R*v[i]); s+=q[0].toFixed(1)+','+q[1].toFixed(1)+' '; } return s; }
+    frag+='<polygon points="'+poly(pleno)+'" fill="none" stroke="#6f879c" stroke-width="1.5" stroke-dasharray="4 4"/>';
+    var mePts=poly(me), zero=poly([0,0,0,0,0,0]);
+    frag+='<polygon id="meShape" points="'+(reduce?mePts:zero)+'" fill="'+fill+'" stroke="'+accent+'" stroke-width="2"/>';
+    for (var z=0;z<n;z++){ var q=pt(z,R*me[z]); frag+='<circle cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="3.4" fill="'+accent+'"/>'; }
+    var parsed=new DOMParser().parseFromString('<svg xmlns="http://www.w3.org/2000/svg">'+frag+'</svg>','image/svg+xml').documentElement;
+    while(parsed.firstChild){ svg.appendChild(parsed.firstChild); }
+    if (!reduce){
+      var meShape=document.getElementById('meShape');
+      var obs=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ setTimeout(function(){ meShape.style.transition='all 1.1s cubic-bezier(.2,.8,.2,1)'; meShape.setAttribute('points',mePts); },120); obs.disconnect(); } });
+      },{threshold:.4});
+      obs.observe(svg);
+    }
+  })();
+
+  // ---- HUD cursor (apenas ponteiro fino) ----
+  if (!reduce && window.matchMedia && window.matchMedia('(pointer:fine)').matches) {
+    var ring=document.createElement('div');
+    ring.style.cssText='position:fixed;left:0;top:0;width:26px;height:26px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:70;transform:translate(-50%,-50%);transition:width .18s,height .18s,background .18s,border-color .18s;will-change:transform;mix-blend-mode:screen';
+    var dot=document.createElement('div');
+    dot.style.cssText='position:fixed;left:0;top:0;width:4px;height:4px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:71;transform:translate(-50%,-50%);will-change:transform';
+    document.body.appendChild(ring); document.body.appendChild(dot);
+    var mx=window.innerWidth/2, my=window.innerHeight/2, rx=mx, ry=my;
+    window.addEventListener('pointermove', function(e){
+      mx=e.clientX; my=e.clientY; dot.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';
+      var t=e.target;
+      var hot = t && (t.closest('a,button,[data-case-head]'));
+      if(hot){ ring.style.width='44px'; ring.style.height='44px'; ring.style.background='var(--accent-soft)'; }
+      else { ring.style.width='26px'; ring.style.height='26px'; ring.style.background='transparent'; }
+    });
+    (function loop(){ rx+=(mx-rx)*0.18; ry+=(my-ry)*0.18; ring.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
+  }
+});
+</script>
+
+</body>
+</html>

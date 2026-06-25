@@ -1,0 +1,55 @@
+# ──────────────────────────────────────────────────────────────
+#  Curadoria de segurança (PRD §4.1 / §4.2)
+#  O site é open-source, mas NADA sensível pode ser versionado.
+#  "O que não pode ser público simplesmente não existe no repo."
+# ──────────────────────────────────────────────────────────────
+
+# Documentos internos / privados (PRDs com nomes internos, relatórios,
+# estratégia de negociação salarial, evidências com dados reais, etc.)
+_private/
+_private/**
+docs-internal/
+**/*.private.*
+**/*.internal.*
+
+# PRD-fonte e bundle de design (contêm nomes/IDs internos — §4.2)
+PRD-*.md
+*_offline_.html
+*_offline_*.html
+
+# Segredos genéricos (defesa em profundidade — não deve existir nenhum)
+.env
+.env.*
+*.local
+*.local.*
+secrets.*
+*.key
+*.pem
+*.p12
+*.pfx
+credentials*
+*token*
+*secret*
+
+# Dependências / build (não há build, mas por segurança)
+node_modules/
+dist/
+build/
+.cache/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Editores / ferramentas locais
+.vscode/
+.idea/
+*.sublime-*
+.claude/settings.local.json
+
+# Logs
+*.log
+npm-debug.log*
